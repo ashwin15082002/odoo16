@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="systray_icon" owl="1">
+
+        <t t-if="this.state.is_option_enabled">
+            <div class="new_icon">
+                <div class="icon_div">
+                    <div class="toggle-icon" role="button">
+                        <i id='create_order' t-on-click="() => onClick(this)"
+                           class="fa fa-cloud fa-1.5x"
+                           style="color: white; margin-bottom:10px; padding:13px;"
+                           role="img"
+                           data-bs-toggle="modal"
+                           data-bs-target="#weather"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+        <div class="modal" tabindex="-1" role="dialog" id="weather">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Weather Updates</h5>
+
+                    </div>
+                    <div class="modal-body" id="body" display="flex" t-if="this.state.dict">
+                        <div style="float:left">
+                            <h2><span id="loc" t-esc="this.state.dict.name"/></h2>
+                            <br/>
+                            <p><b>Day </b>
+                                <span id="max"
+                                      t-esc="this.state.dict.temp_max"/>K
+                                <i class="fa fa-arrow-up" aria-hidden="true"/></p>
+                            <p><b> Night  </b>
+                                <span id="min"
+                                      t-esc="this.state.dict.temp_min"/>K
+                                <i class="fa fa-arrow-down" aria-hidden="true"/>
+                            </p>
+                            <h2><span id="temp" t-esc="this.state.dict.feels_like"/>
+                                K
+                                <span id="type" t-esc="this.state.dict.type"/></h2>
+                            <h4><span id="weather_type" t-esc="this.state.dict.weather_type"/></h4>
+                        </div>
+                        <div style="float:right; border-style: solid;">
+                            <img t-attf-src="https://openweathermap.org/img/wn/{{this.state.dict.icon}}@2x.png"
+                                 height="150" width="150"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </t>
+</templates>

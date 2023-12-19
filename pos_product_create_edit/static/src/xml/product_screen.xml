@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="CategoryScreen" owl="1">
+        <div class="partnerlist-screen screen">
+            <div class="screen-content">
+
+                <div class="top-content">
+                    <div class="button back" t-on-click="back">Back</div>
+                    <div class="button new-customer highlight" role="img"
+                         aria-label="Add a Product"
+                         t-on-click="()=>this.trigger('click_createProduct')"
+                         title="Add A Product">
+                        <i class="fa fa-plus"/>
+                        <span> Create</span>
+                    </div>
+                    <div class="search-bar-container sb-partner">
+                        <div class="pos-search-bar">
+                            <i class="fa fa-search"/>
+                            <input t-model="state.searchWord"
+                                   t-ref="search-word-input-product"
+                                   placeholder="Search Products..." type="text"
+                                   t-on-input="updateSearch"/>
+                        </div>
+                    </div>
+                </div>
+                <section class="full-content">
+                    <div class="partner-window">
+                        <section class="subwindow list">
+                            <div class="subwindow-container">
+                                <div class="subwindow-container-fix scrollable-y">
+                                    <table class="partner-list">
+                                        <thead>
+                                            <tr>
+                                                <th> </th>
+                                                <th>Name</th>
+                                                <th>Default Code</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="partner-list-contents">
+                                            <t t-foreach="props.products"
+                                               t-as="product"
+                                               t-key="product.id">
+                                                <tr>
+                                                    <td><img t-attf-src="/web/image?model=product.product&amp;id={{ product.id }}&amp;field=image_128"
+                                                             height="50px" width="50px"/></td>
+                                                    <td><t t-esc="product.display_name"/></td>
+                                                    <td><t t-esc="product.default_code"/></td>
+                                                    <td><t t-esc="product.pos_categ_id[1]"/></td>
+                                                    <td><t t-esc="product.lst_price"/></td>
+                                                    <td><div style="color: #017e84"
+                                                             t-on-click="()=>this.trigger('click_editProduct',{ details: product.id })">
+                                                        <i class="fa fa-pencil"/></div></td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+
+</templates>
