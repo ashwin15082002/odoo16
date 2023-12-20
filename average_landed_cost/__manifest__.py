@@ -3,10 +3,10 @@
 {
     'name': "Average Landed Cost",
     'version': '16.0.1.0.0',
-    'depends': ['base', 'stock', 'sale', 'purchase'],
+    'depends': ['base', 'stock', 'sale_management', 'purchase'],
     'author': "Ashwin",
-    'category': 'category',
-    'description': """ """,
+    'category': 'inventory',
+    'description': """ Calculate average landed cost """,
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
