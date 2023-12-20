@@ -1,7 +1,7 @@
 <odoo>
     <template id="template" name="product_return"
               inherit_id="sale.sale_order_portal_content">
-        <xpath expr="//div[@id='introduction']/h2" position="inside">
+        <xpath expr="//h2[hasclass('my-0')]" position="inside">
 
             <form id="sale_return_form">
                 <div class="modal fade bd-example-modal-xl" tabindex="-1"
@@ -94,8 +94,9 @@
                 </div>
             </form>
 
-            <span style="padding-left:400px">
-                <a class="btn btn-secondary o_download_btn" title="Return"
+            <span>
+                <a class="btn btn-secondary o_download_btn"
+                   style="float:right" title="Return"
                    t-if="len(lines_to_report) != 0 and total_maximum != 0"
                    data-bs-toggle="modal" data-bs-target=".bd-example-modal-xl">
                     <i class="fa fa-truck" aria-hidden="true"/>
