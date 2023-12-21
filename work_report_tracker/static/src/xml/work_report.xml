@@ -9,8 +9,8 @@
                     <div>
                         <select class="form-select" t-model="state.period"
                                 t-on-change="onPeriodChange">
-                            <option value="7">Last 7 Days</option>
-                            <option value="30">Last 30 Days</option>
+                            <option value="Date">Date</option>
+                            <option value="Employee">Employee</option>
                         </select>
                     </div>
                 </div>
@@ -25,6 +25,5 @@
                 </div>
             </div>
         </div>
-
     </t>
 </templates>

@@ -8,7 +8,7 @@ export class WorkReport extends Component {
     setup(){
         this.state = useState({
             data:{},
-            period: 7,
+            period: 'Date',
             chart:[],
         })
         this.WorkReport = useRef("WorkReport"),
@@ -29,9 +29,8 @@ export class WorkReport extends Component {
     }
 
     async FetchData(){
-        const date = this.state.period
-        console.log(date)
-        this.state.data = await this.orm.call("work.report", "get_datas", [date]);
+        const filter = this.state.period
+        this.state.data = await this.orm.call("work.report", "get_datas", [filter]);
 
         this.charts(this.WorkReport.el,'bar',this.state.data.data_x,'Work Report',this.state.data.data_y)
     }

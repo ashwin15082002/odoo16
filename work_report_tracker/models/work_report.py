@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from datetime import timedelta
 
 from odoo import api, fields, models
 from odoo.fields import Date
 
 
 class WorkReport(models.Model):
+    """ This model is used for tracking daily work report of employees """
     _name = 'work.report'
     _description = 'Work Report Tracker'
 
@@ -16,19 +16,37 @@ class WorkReport(models.Model):
     work_report = fields.Html(string='Email Content', help='Work Report Body')
 
     @api.model
-    def get_datas(self, date_count):
-        if date_count == '30':
-            start_date = Date.today() - timedelta(days=30)
+    def get_datas(self, filter):
+        """ This function is called from work_report.js file for getting data for reporting."""
+        if filter == 'Date':
+            res = self.get_date_data()
+            return res
         else:
-            start_date = Date.today() - timedelta(days=7)
+            res = self.get_employee_data()
+            return res
 
-        work_reports = self.search([('date', '>', start_date)])
+    def get_date_data(self):
+        """ if the filter is date then this function works and return data"""
+        work_reports = self.search([('date', '=', Date.today())])
         data_x = list(set(work_reports.mapped('name')))
         data_y = []
         for i in data_x:
             count = len(work_reports.filtered(lambda x: x.name == i))
             data_y.append(count)
 
+        return {
+            'data_x': data_x,
+            'data_y': data_y,
+        }
+
+    def get_employee_data(self):
+        """ if the filter is employee then this function works and return data """
+        work_reports = self.search([])
+        data_x = list(set(work_reports.mapped('name')))
+        data_y = []
+        for i in data_x:
+            count = len(work_reports.filtered(lambda x: x.name == i))
+            data_y.append(count)
         return {
             'data_x': data_x,
             'data_y': data_y,
