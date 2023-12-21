@@ -5,6 +5,7 @@ from odoo import api, models
 
 
 class MailThread(models.AbstractModel):
+    """ Inheriting mail.thread for getting datas from incoming mail """
     _inherit = 'mail.thread'
 
     @api.model

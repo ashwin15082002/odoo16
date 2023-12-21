@@ -3,17 +3,28 @@
     <t t-name="WorkReport" owl="1">
         <div class="col-lg-8">
             <div class="shadow-sm border m-2 p-4 bg-white"
-                                     style="border-radius: 25px">
+                 style="border-radius: 25px">
                 <div class="d-flex align-items-center justify-content-between">
-                    <h1 class="text-primary fw-bold">Work Report</h1>
+                    <h1 class="text-primary fw-bold">Employee Work Report</h1>
                     <div>
-                        <select class="form-select">
+                        <select class="form-select" t-model="state.period"
+                                t-on-change="onPeriodChange">
                             <option value="7">Last 7 Days</option>
                             <option value="30">Last 30 Days</option>
                         </select>
                     </div>
                 </div>
             </div>
+            <div>
+                <div class="shadow-sm border m-2 p-4 bg-white"
+                     style="border-radius: 15px">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="text-primary fw-bold">Work Report</h3>
+                    </div>
+                    <canvas t-ref="WorkReport"/>
+                </div>
+            </div>
         </div>
+
     </t>
 </templates>
