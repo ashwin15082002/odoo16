@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="work_report_dashboard" model="ir.actions.client">
+            <field name="name">WorkReport</field>
+            <field name="tag">employee_work_report_tags</field>
+        </record>
+        <menuitem name="Work Report" id="employee_work_report"
+                  parent="hr.menu_hr_root"
+                  action="work_report_dashboard"/>
+    </data>
+</odoo>

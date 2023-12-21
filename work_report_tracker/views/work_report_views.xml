@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <record id="work_report_search" model="ir.ui.view">
+        <field name="name">work.report.search</field>
+        <field name="model">work.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="0" string="group by">
+                    <filter string="Name" name="name" context="{'group_by':'name'}"/>
+                    <filter string="Email" name="employee_email"
+                            context="{'group_by':'employee_email'}"/>
+                    <filter string="Date" name="date"
+                            context="{'group_by':'date'}"/>
+
+                </group>
+            </search>
+        </field>
+    </record>
+
             <!--tree view-->
     <record id="work_report_tree_view" model="ir.ui.view">
         <field name="name">work.report.tree</field>
         <field name="model">work.report</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="false">
                 <field name="name"/>
+                <field name="employee_email" type="email"/>
+                <field name="email_subject"/>
                 <field name="date"/>
             </tree>
         </field>
@@ -21,13 +40,14 @@
             <form string="Work Report">
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="email_header"/>
-                        <field name="date"/>
+                        <field name="name" readonly="1"/>
+                        <field name="employee_email" type="email" readonly="1"/>
+                        <field name="email_subject" readonly="1"/>
+                        <field name="date" readonly="1"/>
                     </group>
                     <notebook>
                         <page string="Email Content">
-                            <field name="email_body"/>
+                            <field name="work_report" type="html" readonly="1"/>
                         </page>
                     </notebook>
                 </sheet>
