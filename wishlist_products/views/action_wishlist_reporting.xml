@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="action_wishlist_products" model="ir.actions.act_window">
+            <field name="name">Wishlist Products</field>
+            <field name="res_model">wishlist.report</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create</p>
+            </field>
+        </record>
+
+        <menuitem name="Wishlist Products" id="website_wishlist_products"
+                  parent="website.menu_reporting"
+                  sequence="100"
+                  action="action_wishlist_products"/>
+    </data>
+</odoo>
