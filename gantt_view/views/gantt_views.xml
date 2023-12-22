@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    Tree View   -->
+
+    <record id="wishlist_report_tree_view" model="ir.ui.view">
+        <field name="name">tips.tricks.tree</field>
+        <field name="model">tips.tricks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="tips_tricks_view_gantt" model="ir.ui.view">
+        <field name="name">tips.tricks.gantt</field>
+        <field name="model">tips.tricks</field>
+        <field name="arch" type="xml">
+        <gantt date_start="date_start"
+        date_stop="date_deadline"
+        default_group_by='partner_id'>
+        </gantt>
+        </field>
+    </record>
+
+    <record id="fetch_po_view_form" model="ir.ui.view">
+        <field name="name">tips.tricks.form</field>
+        <field name="model">tips.tricks</field>
+        <field name="arch" type="xml">
+            <form string="Fetch PO Wizard">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="number"/>
+                        <field name="date_deadline"/>
+                        <field name="date_start"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+</odoo>
