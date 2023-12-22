@@ -5,6 +5,7 @@ from odoo import fields, models
 
 class WishlistReport(models.Model):
     """ This models shows the report of products in the wishlist """
+
     _name = 'wishlist.report'
     _description = 'Wishlist Report'
 

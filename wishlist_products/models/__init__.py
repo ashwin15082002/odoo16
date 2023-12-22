@@ -2,3 +2,4 @@
 
 from . import product_wishlist
 from . import wishlist_report
+

@@ -11,7 +11,12 @@ class WebsiteWishlist(models.Model):
                          product_id, partner_id=False):
         """ This function is used to while adding products into wishlist
         also create a record in the wishlist_report model. """
+
         res = super()._add_to_wishlist(pricelist_id, currency_id, website_id,
                                        price, product_id, partner_id)
-        self.env['wishlist.report'].create({'partner_id': res.partner_id.id,
-                                            'product_id': res.product_id.id})
+        if res.partner_id:
+            self.env['wishlist.report'].create({'partner_id': res.partner_id.id,
+                                                'product_id': res.product_id.id})
+        else:
+            raise models.ValidationError(
+                "Please login to Add product in Wishlist.")
