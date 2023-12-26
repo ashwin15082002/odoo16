@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="GanttView" t-inherit="project.ProjectControlPanel.Regular"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//nav[@class='btn-group o_cp_switch_buttons']"
+               position="inside"><t t-log="props"/>
+            <button class="btn btn-light fa-lg o_switch_view"
+                    t-on-click="">
+                <i class="fa fa-align-center"/></button>
+        </xpath>
+    </t>
+</templates>
