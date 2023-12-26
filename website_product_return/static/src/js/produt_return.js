@@ -27,12 +27,9 @@ odoo.define('website_product_return.return', function (require) {
 
         var val = []
         var order = []
-        var delivered_qty = []
         $("tr.order_line").each(function(){
             var el = $(this)
             order = el.find(".quantity").data("order-id"),
-            delivered_qty.push({'delivered': el.find(".quantity").data("delivered_qty"),
-                                'line_id': el.find(".quantity").data("product-id"),})
             val.push({'product_id': el.find(".quantity").data("product-id"),
                       'quantity': el.find(".quantity").val(),})
 
