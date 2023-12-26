@@ -94,15 +94,13 @@
                 </div>
             </form>
 
-            <span>
-                <a class="btn btn-secondary o_download_btn"
-                   style="float:right" title="Return"
-                   t-if="len(lines_to_report) != 0 and total_maximum != 0"
-                   data-bs-toggle="modal" data-bs-target=".bd-example-modal-xl">
-                    <i class="fa fa-truck" aria-hidden="true"/>
-                    Return
-                </a>
-            </span>
+            <a class="btn btn-secondary o_download_btn"
+               style="float:right" title="Return"
+               t-if="len(lines_to_report) != 0 and total_maximum != 0"
+               data-bs-toggle="modal" data-bs-target=".bd-example-modal-xl">
+                <i class="fa fa-truck" aria-hidden="true"/>
+                Return
+            </a>
 
         </xpath>
     </template>
