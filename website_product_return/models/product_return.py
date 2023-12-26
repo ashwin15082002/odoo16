@@ -8,7 +8,8 @@ class SaleReturn(models.Model):
 
     @api.model
     def create_picking(self, val, order_id):
-        """ This functions help us to create stock picking and shown the picking in the delivery tab"""
+        """ This functions help us to create stock picking and shown the
+            picking in the delivery tab"""
 
         order = self.env['sale.order'].browse(order_id)
         print(val)
@@ -33,3 +34,4 @@ class SaleReturn(models.Model):
                 order.picking_ids = picking
         if transfer['move_ids']:
             return transfer
+        return False
